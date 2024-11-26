@@ -24,7 +24,6 @@ pipeline {
                 sh "sudo docker tag kubemisbah/ica2_dockerrepo:latest kubemisbah/ica2_dockerrepo:develop-${env.BUILD_ID}" 
 		sh 'sudo docker stop ica-app || true && docker rm ica-app || true'
                 sh 'sudo docker run --name ica-app -d -p 8081:80 kubemisbah/ica2_dockerrepo:latest'
-                sh 'sudo docker run -d -p 8081:80 kubemisbah/ica2_dockerrepo:latest'
             } 
         }
 
