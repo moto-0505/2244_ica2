@@ -4,7 +4,7 @@ pipeline {
         stage('Build and run docker image') {
             steps {
                 sh 'sudo docker pull kubemisbah/ica2_dockerrepo:latest'
-                sh 'sudo docker run run -d -p 8082:80 kubemisbah/ica2_dockerrepo:latest'
+                sh 'sudo docker run -d -p 8082:80 kubemisbah/ica2_dockerrepo:latest'
             } 
         }
 
