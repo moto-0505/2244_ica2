@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build and run docker image') {
             steps {
-						sh 'sudo docker stop ica || true && docker rm ica || true'
+						sh 'sudo docker stop ica || true && sudo docker rm ica || true'
 						sh 'sudo docker pull kubemisbah/ica2_dockerrepo:latest'
 						sh 'sudo docker run --name ica -d -p 8082:80 kubemisbah/ica2_dockerrepo:latest'
 
