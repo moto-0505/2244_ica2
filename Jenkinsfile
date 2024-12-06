@@ -17,9 +17,9 @@ pipeline {
                 sshagent(['ssh-key']) {
                     // withCredentials([usernamePassword(credentialsId: 'DockerHubPwd', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh '''
-                            ssh -tt vagrant@192.168.56.3 -o StrictHostKeyChecking=no  "sudo docker pull kubemisbah/ica2_dockerrepo:latest"
-                            ssh -tt vagrant@192.168.56.3 -o StrictHostKeyChecking=no "sudo docker stop ica || true && docker rm ica || true"
-                            ssh -tt vagrant@192.168.56.3 -o StrictHostKeyChecking=no "sudo docker run --name ica -d -p 8082:80 kubemisbah/ica2_dockerrepo:latest"
+                            ssh -tt vagrant@ 192.168.56.4 -o StrictHostKeyChecking=no  "sudo docker pull kubemisbah/ica2_dockerrepo:latest"
+                            ssh -tt vagrant@192.168.56.4 -o StrictHostKeyChecking=no "sudo docker stop ica || true && docker rm ica || true"
+                            ssh -tt vagrant@192.168.56.4 -o StrictHostKeyChecking=no "sudo docker run --name ica -d -p 8082:80 kubemisbah/ica2_dockerrepo:latest"
                         '''
                     // }
                 }
@@ -28,7 +28,7 @@ pipeline {
 
         stage('testing') {
             steps {
-                sh 'curl -I http://192.168.56.3:8082'
+                sh 'curl -I http://192.168.56.4:8082'
             }
         }
 
